@@ -1,0 +1,50 @@
+.submenusp {
+    text-align: center;
+    background-color: white!important;
+    box-shadow: 
+    0 0 8px rgba(0, 0, 0, 0.10);
+    padding: 10px;
+    margin-bottom: 40px;
+} 
+
+.navbar {
+    margin-bottom: 0;
+    background-image: linear-gradient(to right, #b0bec5, #bfcad0, #ced6db, #dde3e6, #eceff1);
+}
+
+.logo-nav{
+    width: 42;
+    height: 42;
+}
+
+.navbar img {
+    max-width:250px;
+    max-height:150px;
+    width: auto;
+    height: auto;
+}
+
+:host ::ng-deep .p-chip.custom-chip {
+    background: var(--primary-color);
+    color: var(--primary-color-text);
+}
+
+@media (max-width: 961px) {
+    .funcoesmesa {
+        width: 40% !important;
+    }
+
+    .navbar img {
+        max-width:150px;
+        max-height:110px;
+    }
+
+}
+
+@media (max-width: 895px) {
+    
+    .nomeusu {
+        width: 100% !important;
+    }
+
+}

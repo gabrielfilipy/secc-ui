@@ -1,0 +1,71 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("primeng/resources/themes/rhea/theme.css");
+html {
+   font-size: 15px !important;
+   font-family: "Times New Roman", Times, serif;
+}
+
+body{
+  
+}
+
+.conteudo {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+.clear{
+  clear: both;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.funcoes{
+  width: 100%;
+  padding: 10px 0;
+}
+
+.centraliza-texto {
+  display: table;
+  height: 40px;
+  text-align: center;
+}
+
+.texto {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.m-texto {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+@media (max-width: 1285px) {
+
+  .conteudo {
+    width: 100%;
+    padding: 5px;
+  }
+
+  /*Alterando tamanho das propriedades do toast*/
+  .p-toast {
+    position: fixed;
+    width: 15rem !important;
+    font-size: 12px !important;
+  }
+  
+  .pi {
+    font-size: 16px !important;
+  }
+  /*Alterando tamanho das propriedades do toast*/
+
+}

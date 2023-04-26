@@ -1,0 +1,23 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    width: 100%;
+    padding: 10px;
+}
+
+.body {
+    margin: 0px;
+}
+
+.msgsistema{
+    width: 100%;
+    padding: 20px;
+    border: 1px solid grey;
+}

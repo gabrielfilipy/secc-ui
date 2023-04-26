@@ -1,0 +1,21 @@
+<div class="bg">
+    <div class="box">
+        <div class="box-header">
+            <img src='assets/logo-mono-prodesp.png'>
+            <p>Por favor, faça o login.</p>
+        </div><!--box-header-->
+        <div class="box-login">
+            <form autocomplete="off" #f="ngForm">
+                <input type="text" class="matricula" pInputText name="sigla" #sigla [(ngModel)]="usuario.sigla">  
+                <input type="password" class="senha" pInputText name="senha" #senha [(ngModel)]="usuario.senha"> 
+                <button class="btn-entrar" pButton type="button" label="Entrar" 
+                    (click)="login()"></button>
+            </form>
+        </div><!--box-login-->
+
+        <div class="box-footer">
+            <a href="">Ir para o Siga</a>
+        </div><!--box-footer-->
+
+    </div><!--box-->
+</div><!--bg-->

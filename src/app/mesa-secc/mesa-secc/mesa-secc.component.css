@@ -1,0 +1,88 @@
+.accordion-heading {
+    margin-bottom: 8px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: grey;
+    color: white;
+    -webkit-touch-callout: none;  /* iPhone OS, Safari */
+    -webkit-user-select: none;    /* Chrome, Safari 3 */
+    -khtml-user-select: none;     /* Safari 2 */
+    -moz-user-select: none;       /* Firefox */
+    -ms-user-select: none;        /* IE10+ */ 
+    user-select: none; 
+}
+
+.accordion-heading:hover {
+    background-color: rgb(143, 141, 141);
+}
+
+.accordion-content {
+    width: 100%;
+}
+
+#btn-novo-doc {
+    width: 130px;
+    background-color: #198754;
+    text-decoration: none;
+    border: none;
+    float: right;
+}
+
+#btn-buscar-doc {
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+    text-align: left;
+    padding: 1rem 1rem;
+    border: 1px solid #e9ecef;
+    border-width: 0 0 1px 0;
+    font-weight: 600;
+    color: #495057;
+    background: red !important;
+    transition: box-shadow 0.2s;
+}
+
+.spinner {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 90px;
+}
+
+body {
+    margin: 0px;
+}
+
+@media (max-width: 685px) {
+    .buscar {
+        width: 50% !important;
+    }
+
+    .criar {
+        width: 40% !important;
+    }
+
+    .textoPrincipal h3  {
+        font-size: 18px;
+    }
+
+    .textoPrincipal i  {
+        font-size: 15px !important;
+    }
+
+}
+
+@media (max-width: 370px) {
+    .buscar {
+        width: 100% !important;
+    }
+
+    .criar {
+        width: 100% !important;
+    }
+
+}

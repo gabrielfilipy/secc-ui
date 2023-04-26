@@ -1,0 +1,35 @@
+<nav class="navbar">
+  <div class="conteudo">
+    <div class="p-grid"> 
+      <div class="p-col-12">
+        <a routerLink="/mesa"> 
+          <img style="size: 10px;" src='assets/logo_prodesp.png' class="logo-nav">
+        </a>
+      </div><!--p-col-12-->   
+    </div><!--conteudo-->
+  </div><!--p-grid-->
+</nav><!--navbar-->
+
+<nav class="submenusp"> 
+  <div class="conteudo">
+    <div class="p-grid"> 
+      <div class="p-col-6 left ">
+        <div class="flex align-items-center centraliza-texto"> 
+          <p>Ambiente de <b>{{ ambiente }}</b></p>
+        </div><!--align-items-center-->
+      </div><!--p-col-6-->
+      <div class="p-col-6 right">
+          <div class="flex align-items-center">
+              
+              <p-chip label="{{ pessoa.nome }} - {{  pessoa.sigla }}" icon="pi pi-user" 
+                styleClass="mr-2 custom-chip">
+              </p-chip>
+ 
+              <button pButton type="button" icon="pi pi-sign-out" style="height: 30px;"
+                label="Sair" class="p-button-danger" (click)="logout()"></button>
+          </div><!--align-items-center-->
+      </div><!--p-col-6-->
+      <div class="clear"></div>
+    </div><!--conteudo-->
+  </div><!--p-grid-->
+</nav><!--navbar-->

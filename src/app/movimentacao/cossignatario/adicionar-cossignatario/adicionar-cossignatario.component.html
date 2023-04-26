@@ -1,0 +1,23 @@
+<form #cossignatarioForm="ngForm" (ngSubmit)="confirmaAInclusaoCossignatario()">
+    <div class="cossiganatario-dialog">
+        <div class="grid"> 
+            <div class="col-6 ">  
+                <div class="p-inputgroup">
+                    <input type="text" name="subscritor" (blur)="buscarPessoa(subscritor)"
+                        pInputText placeholder="Matrícula" #subscritor="ngModel" [(ngModel)]="movimentacao.siglaSubscritor">
+                    <button class="p-inputgroup-addon"
+                        type="button" ><i class="pi pi-ellipsis-h"></i></button>    
+                </div> 
+            </div>
+            <div class="col-6 p-fluid">
+                <div class="p-inputgroup">
+                    <input type="text" pInputText value="{{ pessoa.nome }}" name="nome" 
+                        #name="ngModel" [(ngModel)]="pessoa.nome">  
+                </div> 
+            </div>
+            <div class="col-12 p-fluid">
+                <button pButton type="button" label="Incluir" type="submit" [disabled]="disabledButton"></button>
+            </div>
+        </div>
+    </div><!--cossiganatario-dialog-->
+</form><!--form-->

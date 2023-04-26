@@ -1,0 +1,9 @@
+<button pButton (click)="finalizarDocumento()" type="button" label=" Finalizar" class="p-button-text"> <i class="pi pi-check"></i></button>
+<button pButton (click)="isAssinar()" type="button" label=" Assinar" class="p-button-text"><i class="pi pi-check-square"></i></button>
+<button pButton [routerLink]="['/editar', sigla]" label="Editar" class="p-button-text"><i class="pi pi-file-edit"></i></button>
+<button pButton (click)="confirmaExclusaoDocumento()" label=" Excluir" class="p-button-text"><i class="pi pi-trash"></i></button>
+<button pButton type="button" style="margin-top: 2px;" (click)="openDialogAdicionaCossignatario()" id="btn-novo-doc" label=" Incluir Cossignatário" class="p-button-text"><i class="pi pi-user"></i></button>
+
+<p-blockUI [blocked]="blocked">
+    <p-progressSpinner [style]="{width: '50px', height: '50px'}"></p-progressSpinner>
+</p-blockUI>

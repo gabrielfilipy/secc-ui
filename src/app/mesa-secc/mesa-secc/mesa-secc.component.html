@@ -1,0 +1,75 @@
+<div class="conteudo">
+  <div class="p-grid">
+    <div class="p-col-12 textoPrincipal" style="margin-top: 30px; margin-bottom: 30px;">
+      <h3 style="line-height: 0.5;">Mesa Virtual - Serviços Compras e Contratações</h3>
+    </div><!--p-col-12-->  
+  </div><!--p-grid--> 
+  
+  <div class="grid p-fluid funcoesmesa">
+    <div class="col-4 buscar"> 
+      <div class="p-inputgroup">
+          <input type="text" pInputText placeholder="Buscar" name="documento" #documento>   
+          <a type="button" pButton routerLink="/visualizar/{{ documento.value }}" 
+            pRipple icon="pi pi-search" styleClass="p-button-warn" style="text-decoration: none; color: white;"></a>      
+      </div>
+    </div>
+
+    <div class="col-8 p-fluid criar">
+      <button pButton routerLink="/novo" type="button" id="btn-novo-doc" icon="pi pi-plus-circle" label="Criar Novo" class="p-button-success"></button>
+    </div>
+    <div class="clear"></div>
+  </div><!--p-grid-->
+
+  <div class="p-grid">
+    <div class="p-col-12">
+      
+      <div class="accordion-heading" id="f1" (click)="accordion('f1')">Documentos criados</div><!--accordion-heading-->
+      <div class="accordion-content" *ngIf="id === 'f1'">
+        <p-table [value]="documentosCriados" [responsive]="true"
+          [paginator]="true" [rows]="filtro.size" 
+          [lazy]="true" [totalRecords]="totalRegistros"
+          (onLazyLoad)="aoTrocarPagina($event, false, false)"> 
+          <ng-template pTemplate="header" let-header>
+            <tr>
+                <th>Tempo</th>
+                <th>Número do Documento</th>
+                <th>Descrição do Item</th>
+            </tr>
+          </ng-template><!--ng-template-->
+  
+          <ng-template pTemplate="body" let-documentosCriados>
+            <tr> 
+                <td>{{ calculaDiferenca(documentosCriados.dataCriacao) }}</td>
+                <td><a style="text-decoration: none; color: #448aff;" routerLink="/visualizar/{{ documentosCriados.sigla }}">{{ documentosCriados.sigla }}</a></td>
+                <td>Interessado:{{ documentosCriados.interessado }};Assunto:{{ documentosCriados.assunto }};Número de Referência:{{ documentosCriados.numReferencia }}</td>
+            </tr>
+          </ng-template><!--ng-template-->
+        </p-table><!--ptable-->
+      </div><!--accordion-content-->
+
+      <div class="accordion-heading" id="f2" (click)="accordion('f2')">Outros</div><!--accordion-heading-->
+      <div class="accordion-content" *ngIf="id === 'f2'">
+        <p-table [value]="documentosAssinados" [responsive]="true"
+          [paginator]="true" [rows]="filtro.size" 
+          [lazy]="true" [totalRecords]="totalRegistros"
+          (onLazyLoad)="aoTrocarPagina($event, true, false)"> 
+          <ng-template pTemplate="header" let-header>
+            <tr>
+                <th>Tempo</th>
+                <th>Número do Documento</th>
+                <th>Descrição do Item</th>
+            </tr>
+          </ng-template><!--ng-template-->
+  
+          <ng-template pTemplate="body" let-documentosAssinados>
+            <tr> 
+                <td>{{ calculaDiferenca(documentosAssinados.dataAssinatura) }}</td>
+                <td><a style="text-decoration: none; color: #448aff;" routerLink="/visualizar/{{ documentosAssinados.sigla.replace('/', '') }}">{{ documentosAssinados.sigla }}</a></td>
+                <td>Interessado:{{ documentosAssinados.interessado }};Assunto:{{ documentosAssinados.assunto }};Número de Referência:{{ documentosAssinados.numReferencia }}</td>
+            </tr>
+          </ng-template><!--ng-template-->
+        </p-table><!--ptable-->
+      </div><!--accordion-content-->
+    </div><!--p-col-12-->
+  </div><!--grid-->
+</div><!--conteudo-->  

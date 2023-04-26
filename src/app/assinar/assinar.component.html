@@ -1,0 +1,19 @@
+<div class="conteudo">
+    <div class="icon">
+        <img src="assets/signature-icon.png" style="width: 130px; height: 130px;">
+    </div><!--icon-->
+
+    <div class="content">
+        <b><p>Qual forma assinar?</p></b>
+        <div *ngFor="let ass of assinaturas" class="field-checkbox" style="margin-bottom: 0.20em;">
+            <p-radioButton [inputId]="ass.key" name="ass" [value]="ass" 
+                [(ngModel)]="selectedAssinatura"></p-radioButton>
+            <label [for]="ass.key">{{ass.name}}</label>
+        </div>
+    </div><!--content-->
+
+    <div class="footer">
+        <button pButton type="submit" (click)="assinar()" label="Assinar"  ></button>
+    </div><!--footer-->
+
+</div><!--conteudo-->

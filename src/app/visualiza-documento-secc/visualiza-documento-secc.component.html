@@ -1,0 +1,54 @@
+<div class="conteudo">
+    <div class="grid">
+
+        <div class="col-12">
+            <h4>{{ documento.sigla }}</h4>
+        </div><!--col-12-->
+        
+        <div class="col-12">
+            <app-funcoes [sigla]="documento.sigla" (atualizarListaCossignatarios)="carregarMovimentacoes(documento.sigla, 1)"></app-funcoes>
+        </div><!--col-12-->
+
+        <div class="col-9">
+            <div id="visualizadorDocumento">
+                <div class="header">
+                    <img src="assets/logo-prodesp-color.png" style="width: 150px;">
+                    <p style="margin-bottom: 25px;"><b>AMBIENTE</b></p>
+                    <p>{{ pessoaDocumento.lotacao.orgao.nome }}</p>
+                    <p>{{ pessoaDocumento.lotacao.nome }}</p>
+                    <p style="margin-top: 40px;"><b>{{ documento.modelo }}</b></p>
+                </div><!--header-->
+                
+                <div class="body">
+                    <a><b>Número de Referência: </b>{{ documento.numReferencia }}</a>
+                    <br>
+                    <a><b>Interessado: </b>{{ documento.interessado }}</a>
+                    <br>
+                    <a><b>Assunto: </b>{{ documento.assunto }}</a>
+                    <br>
+                    <br>
+                    <div [innerHTML]="documento.textoMemorando"></div>
+                </div><!--body-->
+
+                <div class="footer">
+                    {{ pessoaDocumento.nome }}
+                    <p>{{ pessoaDocumento.lotacao.nome }}</p>
+                </div><!--footer-->
+            </div><!--visualizadorDocumento-->
+        </div><!--col-6-->
+
+        <div class="col-3">
+            <app-cossignatario [siglaDocumento]="siglaDocumento" [movimentacao]="movimentacao"
+                (excluirMovimentacao)="carregarMovimentacoes(documento.sigla, 1)"></app-cossignatario>
+        </div>
+
+    </div><!--grid-->
+</div><!--conteudo-->
+
+<p-blockUI [blocked]="blocked">
+    <p-progressSpinner *ngIf="blocked" [style]="{width: '50px', height: '50px'}"></p-progressSpinner>
+</p-blockUI>
+
+
+
+

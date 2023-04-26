@@ -1,0 +1,12 @@
+<div class="box-login">
+    <form autocomplete="off" #f="ngForm">
+        <input type="text" class="matricula" pInputText name="sigla" #sigla [(ngModel)]="usuario.sigla">  
+        <input type="password" class="senha" pInputText name="senha" #senha [(ngModel)]="usuario.senha"> 
+        <button class="btn-entrar" [disabled]="blocked" pButton type="button" label="Assinar" 
+            (click)="autenticar()"></button>
+    </form>
+</div><!--box-login-->
+
+<p-blockUI [blocked]="blocked">
+    <p-progressSpinner *ngIf="blocked" [style]="{width: '50px', height: '50px'}"></p-progressSpinner>
+</p-blockUI>

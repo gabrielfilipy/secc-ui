@@ -1,0 +1,154 @@
+<div class="titulo-cria-doc">
+    <div class="conteudo">
+        <div class="p-grid">
+            <div class="p-col-12">
+                <h5>{{ titulo }}</h5>
+                <div class="destaque"></div>
+            </div><!--p=col-12-->
+        </div><!--p-grid-->
+    </div><!--conteudo-->
+</div><!--titulo-cria-doc-->
+<div class="conteudo">
+    <form #documentoForm="ngForm" autocomplete="off" (ngSubmit)="criarDoc(documentoForm)">
+        <div class="grid">
+            <div class="col-6 p-fluid modelo">
+                <label>Modelo</label>
+                <p-dropdown [options]="modeloDocumento" name="modelo" 
+                    [(ngModel)]="documento.modelo" #modelo (click)="isAlterModelo(modelo.value)">
+                    <ng-template pTemplate="body" let-modeloDocumento>
+                        <td>{{ modeloDocumento.label }}</td>
+                    </ng-template><!--ng-template-->
+                </p-dropdown>
+            </div>
+            <div class="col-6 p-fluid textopadrao">
+                <label>Meus textos padrão</label>
+                <p-dropdown [options]="textoPadrao" [(ngModel)]="selectTxtPadrao" 
+                    placeholder="Em branco" optionLabel="titulo" name="txtP" #txtP
+                    (onChange)="setarValorDesseTexto(txtP.selectedOption.id)">
+                </p-dropdown>
+                <div class="flex flex-row-reverse flex-wrap card-container yellow-container">
+                    <div class="flex align-items-center justify-content-center w-3rem h-4rem">
+                        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-secondary"
+                            pTooltip="Exclua um texto selecionado no dropdown acima"
+                            (click)="confirmaExclusaoTxtPadrao(txtP.selectedOption.id, txtP.selectedOption.titulo, modelo.value)"></button> 
+                    </div>
+                    <div class="flex align-items-center justify-content-center w-3rem h-4rem">
+                        <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded p-button-secondary"
+                            pTooltip="Adicione um novo texto padrão ou atualize o texto selecionado no dropdown acima"
+                            (click)="addTituloTextoPadrao()"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 p-fluid siglarespassinatura">
+                <label>Responsável pela assinatura</label>
+                <div class="p-inputgroup">
+                    <input type="text" name="responsavelAssinatura" #responsavelAssinatura="ngModel"
+                        [(ngModel)]="respAssinatura.sigla" pInputText placeholder="Matrícula"
+                        (blur)="pegaPessoa(responsavelAssinatura)">
+                    <button [disabled]="carregar" class="p-inputgroup-addon" type="button" (click)="listarUsu()"><i
+                            class="pi pi-ellipsis-h"></i></button>
+                </div>
+                <!--TODO: Componetizar-->
+                <p-dialog header="Dados do Usuário" [(visible)]="listar" [style]="{width: '50vw'}">
+                    <div class="grid">
+                        <div class="col-12 p-fluid">
+                            <Label>Órgão</Label>
+                            <p-dropdown placeholder="Selecione"></p-dropdown>
+                        </div>
+                        <div class="col-12 p-fluid">
+                            <p-divider></p-divider>
+                        </div>
+                        <div class="col-12 p-fluid">
+                            <Label>Nome ou Usuário</Label>
+                            <input type="text" pInputText>
+                        </div>
+                        <div class="col-3 p-fluid">
+                            <Label>Unidade</Label>
+                            <div class="p-inputgroup">
+                                <input type="text" pInputText placeholder="Matrícula">
+                                <button class="p-inputgroup-addon" (click)="listarUsu()" type="button"><i
+                                        class="pi pi-ellipsis-h"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-9 p-fluid">
+                            <Label>Descrição</Label>
+                            <input type="text" pInputText>
+                        </div>
+                    </div>
+                </p-dialog>
+            </div>
+            <div class="col-4 p-fluid nomerespassinatura">
+                <label>Nome</label>
+                <div class="p-inputgroup">
+                    <input type="text" pInputText value="{{ respAssinatura.nome }}" disabled>  
+                </div> 
+            </div>
+            <div class="col-12 p-fluid">
+                <label>Interessado</label>
+                <div class="p-inputgroup">
+                    <input type="text" pInputText name="interessado" #interessado [(ngModel)]="documento.interessado">
+                </div>
+            </div>
+            <div class="col-12 p-fluid">
+                <label style="font-weight: bold;">Assunto</label>
+                <input type="text" pInputText name="assunto" #assunto="ngModel" required minlength="5"
+                [(ngModel)]="documento.assunto"> 
+                
+            <app-message [control]="assunto.control" error="required"
+                text="Informe um assunto"></app-message>    
+
+            <app-message [control]="assunto.control" error="minlength"
+                text="É preciso informar o mínimo de {{ assunto.errors?.minlength?.requiredLength }} caracteres.">
+            </app-message>
+            </div>
+            <div class="col-12 p-fluid">
+                <label>Número de referência</label>
+                <input type="text" pInputText name="referencia" #referencia="ngModel" required 
+                        [(ngModel)]="documento.numReferencia"> 
+                <app-message [control]="referencia.control" error="required"
+                    text="Informe uma referência"></app-message>    
+                <span style="font-weight: lighter;">Preencha com o número de controle interno e sigla, se houver.
+                    Exemplo:AAA/BB-111/2019</span>
+            </div>
+            <div class="col-12 p-fluid">
+                <label style="font-weight: bold;">Texto do Memorando</label>
+                <p-editor [style]="{'height':'320px'}" name="textoMemorando" #textoMemorando
+                    [(ngModel)]="documento.textoMemorando"></p-editor>
+            </div>
+            
+            <div class="col-12 p-fluid"> 
+                <app-catalogo-bec [documento]="documento" (listaItensBecAdicionados)="pegaItensBecAdicionado($event)"></app-catalogo-bec> 
+            </div>
+
+            <div class="col-12">
+                <button class="p-button" [disabled]="carregar" pButton type="submit" label="Ok"
+                    [disabled]="documentoForm.invalid"></button>
+                    <p-button [disabled]="carregar" class="m-left-botao" label="Visualizar Documento" (click)="openDialogPreVisualizar()"></p-button>
+                <button [disabled]="carregar" href="mesa" style="text-decoration: none; color: white;"
+                    class="m-left-botao voltar" pButton type="submit" label="Voltar"></button>
+            </div>
+            <p-blockUI [blocked]="blocked">
+                <p-progressSpinner *ngIf="blocked" [style]="{width: '50px', height: '50px'}"></p-progressSpinner>
+            </p-blockUI>
+        </div><!--p-grid-->
+    </form><!--form-->
+</div><!--conteudo-->
+<p-dialog [(visible)]="displayDialogTxtPadrao">
+    <ng-template pTemplate="header">
+        {{ tituloCadastroTextPadrao }}
+    </ng-template>
+    <div class="grid">
+        <div class="col-12 p-fluid">
+            <form #tituloForm="ngForm" autocomplete="off">
+                <Label>Título</Label>
+                <input type="text" pInputText name="tituloTxtPadrao" #tituloTxtPadrao="ngModel"
+                    [(ngModel)]="tituloTextoPadrao" required>
+                <span style="font-size: 11px;">Adicione um título para esse texto padrão.</span> 
+            </form>
+        </div>
+    </div>
+    <ng-template pTemplate="footer">
+        <button [disabled]="carregar" pButton type="submit" label="Salvar" (click)="salvarTextoPadrao(modelo.value, txtP)"
+            [disabled]="tituloForm.invalid"></button>
+    </ng-template>
+</p-dialog>

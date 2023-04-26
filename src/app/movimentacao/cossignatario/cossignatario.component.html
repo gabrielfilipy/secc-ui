@@ -1,0 +1,14 @@
+<div class="cossiganatario-content">
+    <p-panel header="Cossignatários" >
+        <p *ngIf="movimentacao.length < 1" style="font-style: italic;">
+            Nenhum cossignatário adicionado...
+        </p>
+        <div *ngFor="let mov of movimentacao; let i = index">
+            <p style="margin: 0 auto;">
+                <i class="pi pi-user" style="font-size: 0.90rem; color: cornflowerblue;"></i> {{ mov.siglaSubscritor }} 
+                <button pButton class="p-button-text " type="button" style="width: 80px; height: 25px;"
+                    (click)="confirmaExclusaoDocumento(siglaDocumento, 1, mov.siglaSubscritor)" label="Remover" ></button>
+            </p>
+        </div>
+    </p-panel> 
+</div><!--cossiganatario-content-->

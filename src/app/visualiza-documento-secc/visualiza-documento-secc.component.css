@@ -1,0 +1,98 @@
+a{
+    text-decoration: none;
+    color: black;
+}
+
+#visualizadorDocumento {
+    width: 100%;
+    padding: 30px;
+    border: 1px solid rgb(134, 134, 134, .5);
+}
+
+#visualizadorDocumento .header {
+    text-align: center;
+    padding: 1px;
+    word-wrap:break-word;
+    width: 100%; 
+    margin-bottom: 45px;
+}
+
+#visualizadorDocumento .header p {
+    margin-top:10px;
+    line-height: 1px;
+}
+
+#visualizadorDocumento .body {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 150px;
+    padding: 1px;
+    word-wrap:break-word;
+}
+
+#visualizadorDocumento .footer {
+    text-align: center;
+    padding: 1px;
+    word-wrap:break-word;
+    width: 100%; 
+    margin-bottom: 45px;
+}
+
+#visualizadorDocumento .footer p {
+    margin-top:10px;
+    line-height: 5px;
+}
+
+.funcoes{
+    width: 100%;
+}
+
+.body p{
+    line-height: 18px;
+}
+
+@keyframes p-progress-spinner-color { 
+    100%,
+    0% {
+        stroke: #ffffff !important;
+    }
+    40% {
+        stroke: #ffffff !important;
+    }
+    66% {
+        stroke: #ffffff !important;
+    }
+    80%,
+    90% {
+        stroke: #ffffff !important;
+    }
+}
+
+@media (max-width: 717px) {
+    .p-button-warning {
+        margin-top: 2px;
+    }
+}
+
+
+
+@media (max-width: 810px) {
+
+    .p-fluid {
+      width: 100% !important;
+    }
+
+    .desf-float{
+        float: none !important;
+    }
+
+    .conteudo-v-doc{
+        width: 90% !important;
+        padding: 1px;
+    }
+
+    .t-cossig{
+        width: 55% !important
+    }
+
+}

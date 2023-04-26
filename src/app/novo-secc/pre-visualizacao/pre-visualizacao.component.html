@@ -1,0 +1,36 @@
+<div class="col-12" id="content" #content>
+    <div id="visualizadorDocumento" #visualizadorDocumento>
+        <div class="header">
+            <img src="assets/logo-prodesp-color.png" style="width: 150px;">
+            <p style="margin-bottom: 25px;"><b>AMBIENTE</b></p>
+            <p>{{ pessoaDocumento.lotacao.orgao.nome }}</p>
+            <p>{{ pessoaDocumento.lotacao.nome }}</p>
+            <p style="margin-top: 40px;"><b>{{ documento.modelo }}</b></p>
+        </div><!--header-->
+            
+        <div class="body">
+            <a><b>Número de Referência: </b>{{ documento.numReferencia }}</a>
+            <br>
+            <a><b>Interessado: </b>{{ documento.interessado }}</a>
+            <br>
+            <a><b>Assunto: </b>{{ documento.assunto }}</a>
+            <br>
+            <br>
+            <div [innerHTML]="documento.textoMemorando"></div>
+        </div><!--body-->
+            
+        <div class="footer">
+            {{ pessoaDocumento.nome }}
+            <p>{{ pessoaDocumento.lotacao.nome }}</p>
+        </div><!--footer-->
+    </div><!--visualizadorDocumento-->
+    
+</div><!--col-6-->
+
+<div class="funcoes">
+    <button (click)="getPDF()"><i class="pi pi-download" style="font-size: 1rem"></i> Download</button>
+</div><!--funcoes-->
+
+
+
+
